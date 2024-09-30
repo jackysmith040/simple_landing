@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="smooth-scroll">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stunning Portfolio Sketch</title>
+    <link rel="icon" type="image/png" href="./3D_glass_cube/3D_glass_cube/PNG/Cube.png" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Blob animations */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Wave animation */
+        .wave {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: wave 10s linear infinite;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Link hover effect */
+        nav a {
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            color: #ff6347; /* Tomato color */
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        /* Button animation */
+        button {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #ff6347;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body x-data="{ isScrolled: false }" @scroll.window="isScrolled = window.scrollY > 10" class="overflow-x-hidden">
+    <main class="max-w-screen-2xl bg-slate-100 relative">
+        <!-- Nav Bar -->
+        <nav :class="isScrolled ? 'bg-gray-200' : 'bg-transparent text-gray-800'" class="w-screen flex gap-2 px-10 py-6 items-center font-semibold justify-between fixed top-0 z-50 shadow-md transition-colors duration-300">
+            <logo-tag>
+                <p class="text-5xl font-bold underline cursor-pointer"><span class="text-[tomato]">Port</span>folio</p>
+            </logo-tag>
+            <div class="flex justify-center items-center gap-8 mr-8">
+                <ul class="flex space-x-9 text-lg">
+                    <li><a href="#home" data-aos="fade-down">Home</a></li>
+                    <li><a href="#about" data-aos="fade-down">About</a></li>
+                    <li><a href="#services" data-aos="fade-down">Services</a></li>
+                    <li><a href="#portfolio" data-aos="fade-down">Portfolio</a></li>
+                    <li><a href="#page" data-aos="fade-down">Page</a></li>
+                    <li><a href="#contact" data-aos="fade-down">Contact</a></li>
+                </ul>
+                <button class="py-3 px-5 bg-[tomato] rounded-md text-slate-50 text-lg">Get Free Consultation</button>
+            </div>
+        </nav>
+
+        <!-- Header Section -->
+        <header class="w-screen relative" id="home">
+            <!-- Optimized Background Video -->
+            <div class="absolute inset-0">
+                <video src="./3D_glass_cube/3D_glass_cube/MP4/Cube_(light_theme).mp4" autoplay loop muted playsinline class="w-full h-screen object-cover">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="absolute inset-0 bg-black opacity-40"></div>
+            </div>
+
+            <!-- Hero Section -->
+            <section class="w-screen h-screen flex flex-col justify-center items-center text-white relative z-10">
+                <h1 class="text-8xl  text-gray-800 font-bold drop-shadow-lg mb-6" data-aos="fade-up">I'm a Python Dev</h1>
+                <p class="text-9xl text-blue-100 font-extralight drop-shadow-lg" data-aos="fade-up" data-aos-delay="300">Fafali Dorkunor</p>
+            </section>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="w-screen h-screen bg-white flex justify-center items-center relative overflow-hidden" data-aos="zoom-in">
+            <div class="blob" style="width: 200px; height: 200px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="blob" style="width: 150px; height: 150px; top: 60%; right: 15%; animation-delay: 1s;"></div>
+            <div class="wave"></div>
+            <h2 class="text-6xl font-bold">About Me</h2>
+        </section>
+
+        <section id="services" class="w-screen h-screen bg-gray-200 flex justify-center items-center relative overflow-hidden" data-aos="slide-up">
+            <div class="blob" style="width: 200px; height: 200px; top: 30%; left: 5%; animation-delay: 0.5s;"></div>
+            <div class="blob" style="width: 150px; height: 150px; top: 50%; right: 10%; animation-delay: 1.5s;"></div>
+            <div class="wave"></div>
+            <h2 class="text-6xl font-bold">Services Offered</h2>
+        </section>
+
+        <section id="portfolio" class="w-screen h-screen bg-white flex justify-center items-center relative overflow-hidden" data-aos="fade-left">
+            <div class="blob" style="width: 200px; height: 200px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="blob" style="width: 150px; height: 150px; top: 70%; right: 5%; animation-delay: 1s;"></div>
+            <div class="wave"></div>
+            <h2 class="text-6xl font-bold">My Work</h2>
+        </section>
+
+        <section id="page" class="w-screen h-screen bg-gray-200 flex justify-center items-center relative overflow-hidden" data-aos="fade-right">
+            <div class="blob" style="width: 200px; height: 200px; top: 25%; left: 15%; animation-delay: 0.5s;"></div>
+            <div class="blob" style="width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: 1.5s;"></div>
+            <div class="wave"></div>
+            <h2 class="text-6xl font-bold">Other Projects</h2>
+        </section>
+
+        <section id="contact" class="w-screen h-screen bg-white flex justify-center items-center relative overflow-hidden" data-aos="zoom-out">
+            <div class="blob" style="width: 200px; height: 200px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="blob" style="width: 150px; height: 150px; top: 50%; right: 10%; animation-delay: 1s;"></div>
+            <div class="wave"></div>
+            <h2 class="text-6xl font-bold">Contact Me</h2>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="w-full bg-gray-800 text-white py-6">
+            <div class="max-w-screen-2xl mx-auto flex justify-between items-center px-10">
+                <div>
+                    <p class="text-lg font-semibold">Follow Us</p>
+                    <div class="flex space-x-4 mt-2">
+                        <a href="#" class="hover:text-[tomato]">Facebook</a>
+                        <a href="#" class="hover:text-[tomato]">Twitter</a>
+                        <a href="#" class="hover:text-[tomato]">LinkedIn</a>
+                        <a href="#" class="hover:text-[tomato]">Instagram</a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm">© 2024 Portfolio. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        AOS.init({ duration: 2000, easing: 'ease-in-out' }); // Initialize Animate on Scroll library with advanced settings
+    </script>
+</body>
+</html>
